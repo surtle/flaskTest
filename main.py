@@ -1,20 +1,7 @@
-from flask import Flask
-app = Flask("peacefulravine")
+from app import app
+app.run(debug=True)
 
-
-def hello():
-	return "Hello World!"
-@app.route("/")
-def goodbye():
-        return "Goodbye"
-
-if __name__ == "__main__":
-
-        try:
-                goodbye()
-
-        except KeyboardInterrupt:
-                raise
+        
 
         
                 
