@@ -1,4 +1,4 @@
 from flask import Flask
 
-app = Flask("peacefulravine")
+app = Flask(__name__)
 from app import views
