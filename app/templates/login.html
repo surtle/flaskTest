@@ -1,0 +1,39 @@
+<!-- extends from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h1>Sign in</h1>
+
+  <form action="" method="post" name="login">
+
+    {{ form.hidden_tag() }}
+
+    <p>
+      <!-- prompts for username -->
+      Please enter your OpenID:<br>
+      {{ form.openid(size=80) }}<br>
+
+      <!-- handles error messages for invalid entries -->
+      {% for error in form.openid.errors %}
+        <span style="color: red;">[{{error}}]</span>
+      {% endfor %}<br>
+
+      <!-- links to all providers -->
+      |{% for pr in providers %}
+         <a href="javascript:set_openid('{{ pr.url }}', '{{ pr.name }}');">
+           {{ pr.name }}
+         </a>
+       {% endfor %}
+
+    </p>
+
+    <!-- Remember Me option -->
+    <p>{{ form.remember_me }} Remember Me</p>
+
+    <!-- Sign in button -->
+    <p><input type="submit" value="Sign In"></p>
+
+  </form>
+
+{% endblock %}

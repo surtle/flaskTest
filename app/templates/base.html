@@ -1,14 +1,31 @@
 <html>
   <head>
+
     {% if title %}
     <title>{{ title }} - work in progress</title>
     {% else %} 
     <title>Welcome!</title>
     {% endif %} 
+
   </head>
   <body>
+
     <div>work in progress - <a href="/index">Home</a></div>
     <hr>
+
+    <!-- flash messages for debug purposes -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- main content -->
     {% block content %}{% endblock %}
+
   </body>
 </html>
