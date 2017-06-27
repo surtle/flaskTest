@@ -4,6 +4,9 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, \
        current_user
 from .forms import LoginForm
 
+lm = LoginManager(app)
+lm.login_view = 'index'
+
 #====================================================================
 # Loads user
 #====================================================================

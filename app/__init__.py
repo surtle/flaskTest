@@ -19,9 +19,6 @@ app.config['OAUTH_CREDENTIALS'] = {
 
 # initialize database
 db = SQLAlchemy(app)
-
-# initialize LoginManager for OAuth
-lm = LoginManager(app)
-lm.login_view = 'index' 
+db.create_all()
 
 from app import views
