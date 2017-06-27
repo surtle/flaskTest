@@ -10,13 +10,15 @@ from app import db
 
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  nickname = db.Column(db.String(64), index=True, unique=True) 
-  email = db.Column(db.String(120), index=True, unique=True) 
+  social_id = db.Column(db.String(64), nullable=False, unique=True)
+  nickname = db.Column(db.String(64), nullable=False) 
+  email = db.Column(db.String(120), nullable=True) 
   totVal = db.Column(db.Float) 
   categories = db.relationship('Category', backref=db.backref('user',
         lazy='joined'), lazy='dynamic')
 
-  def __init__(self, nickname, email, totVal):
+  def __init__(self, social_id, nickname, email, totVal):
+    self.social_id = social_id
     self.nickname = nickname
     self.email = email
     self.totVal = totVal
